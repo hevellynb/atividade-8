@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HGAMES: Tabuada Divertida</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="tabuada-divertida.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="index.html">
+            <i id="icone" class="fa-solid fa-hat-wizard">
+                <span id="icone-titulo">HGAMES</span>
+              </i>
+        </a>
+        <a class="btn-default" href="#">Github</a>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <div id="comeco-jogo">
+          <h3 class="texto-destaque">Tabuada divertida</h3>
+          <p id="explicacao-jogo">
+            Bem vindo ao jogo da tabuada divertida! O jogo contém 5 fases com
+            operações aleatórias da tabuada de multiplicação. Seu objetivo é
+            acertar todas as questões para que seu personagem consiga sair da
+            masmorra. Boa sorte!
+          </p>
+
+          <ul>
+            <p>Pontuação:</p>
+            <li>Acertar: +2 pontos</li>
+            <li>Errar: -1 ponto</li>
+          </ul>
+          <div id="input-nome">
+            <label for="nomeid">Digite seu nome:</label>
+            <input type="text" id="nomeid" />
+          </div>
+          
+          <button class="btn-default tipo2" onclick="comecarJogo()">
+            Começar jogo
+          </button>
+        </div>
+        <div id="jogo-andamento">
+            <h2 class="texto-destaque tipo2" id="numFase">Fase 1</h2>
+          <h2 class="texto-destaque">
+            <span id="num1"></span>
+            <span> X </span>
+            <span id="num2"></span>
+          </h2>
+          <input
+            type="number"
+            name="resposta"
+            id="respostaid"
+            placeholder="Digite sua resposta aqui!"
+          />
+          <button class="btn-default" onclick="verificarResposta()">
+            Próxima fase
+          </button>
+        </div>
+
+        <div id="jogo-fim">
+          <h2 class="texto-destaque"><span id="msgFinal"></span><span id="nome"></span>!</h2>
+          <p id="pontosFinal"></p>
+          <p>Gostaria de jogar novamente?</p>
+          <div id="opcoes">
+            <a class="btn-default" href="">Sim</a>
+            <a class="btn-default" href="index.html">Não</a>
+          </div>
+          
+        </div>
+      </section>
+      <section>
+        <h3 class="texto-destaque" id="pontos">Pontos: 0</h3>
+        <img src="assets/warrior.gif" style="opacity: 0.5" alt="" />
+      </section>
+    </main>
+    <footer>
+      <p>Feito por Hevellyn Barros Costa. 2024</p>
+    </footer>
+
+    <script>
+      let nome;
+      let pontoshtml = document.getElementById("pontos");
+      let pontos = 0;
+      let fases = 0;
+      let faseshtml = document.getElementById("numFase")
+
+      function verificarResposta() {
+        let respostaJogador = Number(
+          document.getElementById("respostaid").value
+        );
+        let num1 = Number(document.getElementById("num1").innerHTML);
+        let num2 = Number(document.getElementById("num2").innerHTML);
+
+        let resposta = num1 * num2;
+
+        if (resposta == respostaJogador) {
+          pontos += 2;
+        } else {
+          pontos -= 1;
+        }
+
+        fases++;
+
+
+        if (fases == 5) {
+          pontoshtml.innerHTML = "Pontos: " + pontos;
+          fimDoJogo(pontos);
+        } else {
+          pontoshtml.innerHTML = "Pontos: " + pontos;
+          randomizarNumeros();
+        }
+      }
+
+      function comecarJogo() {
+        document.getElementById("comeco-jogo").style.display = "none";
+        document.getElementById("jogo-andamento").style.display = "flex";
+
+        nome = document.getElementById("nomeid").value;
+        randomizarNumeros();
+        
+      }
+
+      function randomizarNumeros() {
+        document.getElementById("respostaid").value = "";
+        faseshtml.innerHTML = "Fase " + (fases+1)
+        let num1 = Math.floor(Math.random() * 10) + 1;
+        let num2 = Math.floor(Math.random() * 10) + 1;
+
+        document.getElementById("num1").innerHTML = num1;
+        document.getElementById("num2").innerHTML = num2;
+      }
+
+      function fimDoJogo(pontos) {
+        document.getElementById("jogo-andamento").style.display = "none";
+        document.getElementById("jogo-fim").style.display = "flex";
+        let msg;
+
+        if (nome == "") {
+            document.getElementById("nome").innerHTML = "fulano(a)"
+        } else {
+            document.getElementById("nome").innerHTML = nome
+        }
+        
+        if (pontos == 10){
+            document.getElementById("msgFinal").innerHTML = "Parabéns "
+            msg = "Você completou o jogo com " + pontos + " pontos e chegou no último nível!";
+        } else {
+            document.getElementById("msgFinal").innerHTML = "Continue tentando "
+            msg = "Você completou o jogo com " + pontos + " pontos. Acerte todas as questões para chegar no nível final.";
+        }
+
+        document.getElementById("pontosFinal").innerHTML = msg;
+      }
+    </script>
+  </body>
+</html>

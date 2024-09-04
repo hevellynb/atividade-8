@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&family=SUSE:wght@100..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {    
+    color: #443850;
+    font-family: "SUSE", sans-serif;
+    background-color: #241e2b;
+}
+
+header{
+    padding: 1rem 2rem 1rem 2rem;
+    background-color: #BBBE64;
+    position: sticky;
+    top: 0;
+} 
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+#icone {
+    font-size: 2.5rem;
+    padding: .7rem;
+}
+
+#icone-titulo {
+    font-family: "Handjet";
+    font-size: 2.5rem;
+}
+
+.btn-default {
+    text-decoration: none;
+    font-size: 1.5rem;
+    background-color: #443850;
+    color: #EAF0CE;
+    padding: 1rem;
+    border-radius: 10px;
+    font-family: "Handjet";
+    
+}
+
+.btn-default:hover {
+    padding: 1.2rem;
+    background-color: #544761;
+    box-shadow: 1px 1px 7px 3px rgba(255, 255, 255, 0.452);
+    transition: .3s;
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+}
+
+section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1.5rem;
+    background-color:#241e2b;
+    
+}
+
+#tabuada-divertida-section {
+    background-image: url(assets/warrior.gif);
+    background-position: 70% 0;
+}
+
+#numero-magico-section {
+    background-image: url(assets/archer2.gif);
+    background-position: 70% 0;
+}
+
+.info-jogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    color: #EAF0CE;
+}
+
+.info-jogo > h2 {
+    background-color: #3b2f49;
+    padding: 10px;
+}
+
+.info-jogo > p {
+    background-color: #3b2f49;
+    padding: 10px;
+}
+
+.texto-destaque{
+    font-family: "Handjet";
+    font-size: 3rem;
+    font-weight: 400;
+    color: #BBBE64;
+}
+
+#separador {
+    background-color: #443850;
+    width: 3px;
+    height: 88vh;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: #EAF0CE;
+    color: #443850;
+    padding: 1rem;
+    bottom: 0;
+    position: sticky;
+}
+
+a {
+    color: #443850;
+}
+
+section > #comeco-jogo {
+    color: #EAF0CE;
+    text-align: justify;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.tipo2 {
+    font-size: 2rem;
+}
